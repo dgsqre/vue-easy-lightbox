@@ -1,11 +1,36 @@
 <template>
   <div>
-    <button @click="showSingle">Show single picture.</button>
-    <button @click="showMultiple">Show a group of pictures.</button>
+    <button
+      @click="showSingle"
+      class="dgsq-p-1 border"
+    >
+      Show single picture.
+    </button>
+    <button
+      @click="showMultiple"
+      class=""
+    >
+      Show a group of pictures.
+    </button>
     <br />
-    <button @click="test">test1</button>
-    <button @click="test2">test2</button>
-    <button @click="show">test show</button>
+    <button
+      @click="test"
+      class=""
+    >
+      test1
+    </button>
+    <button
+      @click="test2"
+      class=""
+    >
+      test2
+    </button>
+    <button
+      @click="show"
+      class=""
+    >
+      test show
+    </button>
 
     <vue-easy-lightbox
       :visible="visibleRef"
@@ -18,7 +43,10 @@
       @on-rotate="onRotate"
     >
       <template #title="titleSlotProps">
-        <div class="vel-img-title">{{ titleSlotProps.currentImg?.title }}</div>
+        <h2>Title {{ titleSlotProps.currentImg?.title }}</h2>
+      </template>
+      <template #sidebar>
+        <h3>Sidebar content is here</h3>
       </template>
     </vue-easy-lightbox>
   </div>
@@ -35,8 +63,8 @@ export default defineComponent({
   },
   setup() {
     const imgList = ref([
-      { src: 'http://via.placeholder.com/350x150', title: 'img1' },
-      'http://via.placeholder.com/250x150'
+      { src: 'https://placehold.co/350x150', title: 'img1' },
+      'https://placehold.co/250x150'
     ])
 
     const { visibleRef, indexRef, imgsRef, show, changeIndex, onHide } =
@@ -51,7 +79,7 @@ export default defineComponent({
       show()
     }
     const test2 = () => {
-      imgList.value.push('http://via.placeholder.com/250x150')
+      imgList.value.push('https://placehold.co/250x150')
       show()
     }
 
@@ -61,8 +89,8 @@ export default defineComponent({
     }
     const showMultiple = () => {
       imgsRef.value = [
-        'http://via.placeholder.com/2000x2000',
-        'http://via.placeholder.com/350x150'
+        'https://placehold.co/2000x2000',
+        'https://placehold.co/350x150'
       ]
       changeIndex()
       show()

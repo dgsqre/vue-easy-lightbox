@@ -20,5 +20,12 @@ export default defineConfig({
       web: [/\.[jt]sx$/]
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   plugins: [vue(), vueJsx()]
 })

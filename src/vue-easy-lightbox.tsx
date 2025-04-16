@@ -18,7 +18,7 @@ import { SvgIcon } from './components/svg-icon'
 import { Toolbar } from './components/toolbar'
 import { ImgLoading } from './components/img-loading'
 import { ImgOnError } from './components/img-on-error'
-import { ImgTitle } from './components/img-title'
+import { Title } from './components/title'
 import { DefaultIcons } from './components/default-icons'
 
 import { prefixCls } from './constant'
@@ -184,23 +184,13 @@ export default defineComponent({
       return imgList.value[imgIndex.value]?.alt
     })
 
-    const currCursor = () => {
-      if (status.loadError) return 'default'
-
-      if (props.moveDisabled) {
-        return status.dragging ? 'grabbing' : 'grab'
-      }
-
-      return 'move'
-    }
-
     const imgWrapperStyle = computed(() => {
       return {
-        cursor: currCursor(),
-        top: `calc(50% + ${imgWrapperState.top}px)`,
-        left: `calc(50% + ${imgWrapperState.left}px)`,
-        transition: status.dragging || status.gesturing ? 'none' : '',
-        transform: `translate(-50%, -50%) scale(${imgWrapperState.scale}) rotate(${imgWrapperState.rotateDeg}deg)`
+        // cursor: currCursor(),
+        // top: `calc(50% + ${imgWrapperState.top}px)`,
+        // left: `calc(50% + ${imgWrapperState.left}px)`,
+        // transition: status.dragging || status.gesturing ? 'none' : '',
+        // transform: `translate(-50%, -50%) scale(${imgWrapperState.scale}) rotate(${imgWrapperState.rotateDeg}deg)`
       }
     })
 
@@ -521,6 +511,36 @@ export default defineComponent({
       )
     }
 
+    const renderDialog = () => {
+      return (
+        <div class={`${prefixCls}-modal-dialog`}>
+          <div class={`${prefixCls}-modal-content`}>
+            <div class={`${prefixCls}-header`}>
+              {renderTitle()}
+              {renderCloseBtn()}
+            </div>
+            <div class={`${prefixCls}-modal-body`}>
+              {renderSidebar()}
+              {renderImgWrapper()}
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    const renderSidebar = () => {
+      return slots.sidebar ? (
+        <div
+          class={`${prefixCls}-sidebar`}
+          style={imgWrapperStyle.value}
+        >
+          {slots['sidebar']()}
+        </div>
+      ) : (
+        false
+      )
+    }
+
     const renderImgWrapper = () => {
       return (
         <div
@@ -556,7 +576,7 @@ export default defineComponent({
       } else if (status.loadError) {
         return renderOnError()
       }
-      return renderImgWrapper()
+      return renderDialog()
     }
 
     const renderTestImg = () => (
@@ -624,7 +644,7 @@ export default defineComponent({
         <div
           role="button"
           aria-label="close image preview button"
-          class={`btn__close`}
+          class={`${prefixCls}-btn-close`}
           onClick={closeModal}
         >
           <SvgIcon type="close" />
@@ -662,11 +682,7 @@ export default defineComponent({
         />
       )
     }
-    const renderImgTitle = () => {
-      if (props.titleDisabled || status.loading || status.loadError) {
-        return
-      }
-
+    const renderTitle = () => {
       if (slots.title) {
         return slots.title({
           currentImg: currentImg.value
@@ -674,7 +690,7 @@ export default defineComponent({
       }
 
       if (currentImgTitle.value) {
-        return <ImgTitle>{currentImgTitle.value}</ImgTitle>
+        return <Title>{currentImgTitle.value}</Title>
       }
 
       return
@@ -703,8 +719,6 @@ export default defineComponent({
           <div class={`${prefixCls}-btns-wrapper`}>
             {renderPrevBtn()}
             {renderNextBtn()}
-            {renderImgTitle()}
-            {renderCloseBtn()}
             {renderToolbar()}
           </div>
         </div>
