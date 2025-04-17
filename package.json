@@ -1,5 +1,5 @@
 {
-  "name": "vue-easy-lightbox",
+  "name": "@dogsquare/vue-easy-lightbox",
   "version": "1.0.0",
   "description": "A Vue.js 3.0 image lightbox component with Zoom / Drag / Rotate / Switch",
   "keywords": [
