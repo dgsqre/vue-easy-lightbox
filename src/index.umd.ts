@@ -6,7 +6,9 @@ import { useEasyLightbox } from './composables'
 
 const VueEasyLightbox = Object.assign(_VueEasyLightbox, {
   install: (app: App) => {
-    app.component(_VueEasyLightbox.name, _VueEasyLightbox)
+    if (_VueEasyLightbox.name) {
+      app.component(_VueEasyLightbox.name, _VueEasyLightbox)
+    }
   },
   useEasyLightbox
 })

@@ -17,7 +17,7 @@ export default defineUserConfig({
     })
   ],
   theme: defaultTheme({
-    repo: 'https://github.com/XiongAmao/vue-easy-lightbox',
+    repo: 'https://github.com/dgsqre/vue-easy-lightbox',
     locales: {
       '/': {
         selectLanguageText: 'Language',
@@ -30,7 +30,7 @@ export default defineUserConfig({
           },
           {
             text: 'v0.x (Vue2)',
-            link: 'https://github.com/XiongAmao/vue-easy-lightbox/tree/vue2.x'
+            link: 'https://github.com/dgsqre/vue-easy-lightbox/tree/vue2.x'
           }
         ]
       },
@@ -45,7 +45,7 @@ export default defineUserConfig({
           },
           {
             text: 'v0.x (Vue2)',
-            link: 'https://github.com/XiongAmao/vue-easy-lightbox/tree/vue2.x'
+            link: 'https://github.com/dgsqre/vue-easy-lightbox/tree/vue2.x'
           }
         ]
       },
@@ -60,7 +60,7 @@ export default defineUserConfig({
           },
           {
             text: 'v0.x (Vue2)',
-            link: 'https://github.com/XiongAmao/vue-easy-lightbox/tree/vue2.x'
+            link: 'https://github.com/dgsqre/vue-easy-lightbox/tree/vue2.x'
           }
         ]
       }
