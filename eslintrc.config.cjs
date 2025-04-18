@@ -54,5 +54,6 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'lines-between-class-members': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off'
-  }
+  },
+  ignorePatterns: ["/src/assets/svg/*", "/dist", "/.temp", "/test-dist", "/types"]
 }

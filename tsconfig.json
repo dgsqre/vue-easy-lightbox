@@ -25,6 +25,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "skipLibCheck": true,
     "types": [
       "vitest/globals"
     ],
