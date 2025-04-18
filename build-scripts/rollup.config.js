@@ -7,7 +7,7 @@ import postcss from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer'
 import terser from '@rollup/plugin-terser'
 import Case from 'case'
-import { createBabelConfig } from './rollup.babel.config'
+import { createBabelConfig } from './rollup.babel.config.js'
 
 process.env.NODE_ENV = 'production'
 
